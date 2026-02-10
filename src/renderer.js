@@ -1124,12 +1124,16 @@
   audio.addEventListener('play', () => {
     state.isPlaying = true;
     updatePlayerUI();
+    dom.playerThumbnail.classList.remove('paused');
+    dom.btnPlay.classList.add('is-playing');
     sendMiniPlayerState();
   });
 
   audio.addEventListener('pause', () => {
     state.isPlaying = false;
     updatePlayerUI();
+    dom.playerThumbnail.classList.add('paused');
+    dom.btnPlay.classList.remove('is-playing');
     sendMiniPlayerState();
   });
 
@@ -1184,9 +1188,9 @@
         const barHeight = value * height * 0.8;
 
         const gradient = ctx.createLinearGradient(0, height, 0, height - barHeight);
-        gradient.addColorStop(0, 'rgba(200, 138, 255, 0.85)');
-        gradient.addColorStop(0.5, 'rgba(255, 110, 176, 0.65)');
-        gradient.addColorStop(1, 'rgba(255, 160, 80, 0.55)');
+        gradient.addColorStop(0, 'rgba(255, 45, 120, 0.85)');
+        gradient.addColorStop(0.5, 'rgba(168, 85, 247, 0.65)');
+        gradient.addColorStop(1, 'rgba(255, 92, 154, 0.55)');
 
         ctx.fillStyle = gradient;
         ctx.fillRect(
@@ -1197,7 +1201,7 @@
         );
 
         // Glow effect
-        ctx.shadowColor = 'rgba(200, 138, 255, 0.35)';
+        ctx.shadowColor = 'rgba(255, 45, 120, 0.35)';
         ctx.shadowBlur = 4;
       }
 

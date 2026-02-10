@@ -103,7 +103,7 @@ function createWindow() {
     minWidth: 900,
     minHeight: 600,
     frame: false,
-    backgroundColor: '#0e0e18',
+    backgroundColor: '#000000',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -154,7 +154,7 @@ function createMiniPlayer() {
     alwaysOnTop: true,
     resizable: false,
     skipTaskbar: true,
-    backgroundColor: '#0e0e18',
+    backgroundColor: '#000000',
     hasShadow: true,
     roundedCorners: true,
     webPreferences: {
