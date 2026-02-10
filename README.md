@@ -1,35 +1,52 @@
-# ▶ PLAYGEN
+<p align="center">
+  <img src="assets/icon.png" alt="PlayGen Logo" width="120" />
+</p>
 
-> **Cyberpunk-themed YouTube music downloader & playlist manager**
+<h1 align="center">PlayGen</h1>
 
-![Electron](https://img.shields.io/badge/Electron-28-47848F?style=flat-square&logo=electron)
-![License](https://img.shields.io/badge/License-MIT-00f0ff?style=flat-square)
+<p align="center">
+  <strong>YouTube music downloader & playlist manager built with Electron</strong>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Electron-28-191970?style=for-the-badge&logo=electron&logoColor=white" alt="Electron" />
+  <img src="https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/Platform-Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Platform" />
+  <img src="https://img.shields.io/badge/License-MIT-ff2d78?style=for-the-badge" alt="License" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/yt--dlp-powered-a855f7?style=flat-square" alt="yt-dlp" />
+  <img src="https://img.shields.io/badge/ffmpeg-required-ff5c9a?style=flat-square" alt="ffmpeg" />
+  <img src="https://img.shields.io/badge/Audio-320kbps_MP3-22c55e?style=flat-square" alt="Audio Quality" />
+</p>
 
 ---
 
-## Features
+## ✨ Features
 
-- **Download audio from YouTube** — Paste a URL, get MP3 (320kbps)
-- **Library management** — Browse all your downloaded tracks
-- **Playlist system** — Create, rename, delete playlists; drag-and-drop songs between them
-- **Music player** — Play/pause, next/prev, shuffle, repeat (one/all), volume, seek
-- **Audio visualizer** — Real-time equalizer bars overlaid on the album thumbnail
-- **Cyberpunk UI** — Dark theme with neon cyan/magenta glows, scanline overlay, glitch effects, Orbitron font
-- **Search & filter** — Quickly find songs in your library
-- **Session persistence** — Remembers your last song, playlist, volume, and settings
-- **Keyboard shortcuts** — Space (play/pause), arrows (seek/volume), Ctrl+arrows (next/prev), S (shuffle), R (repeat)
+- **Download from YouTube** — Paste a link, get high-quality MP3 (320 kbps)
+- **Library management** — All your tracks in one place with thumbnails, titles & durations
+- **Playlist system** — Create, rename, reorder & delete playlists with drag-and-drop
+- **Full music player** — Play/pause, skip, shuffle, repeat (one/all), seek & volume
+- **Audio visualizer** — Real-time equalizer bars on the album thumbnail
+- **Mini player** — Compact always-on-top player when minimized
+- **Search** — Instantly filter songs across your library
+- **Session restore** — Picks up right where you left off
+- **Settings panel** — Customize behavior (mini player on minimize, etc.)
+- **Keyboard shortcuts** — Full keyboard control for power users
 
-## Prerequisites
-
-You need these installed and available in your system PATH:
+## 📋 Prerequisites
 
 | Tool | Install |
 |------|---------|
-| **Node.js** (18+) | [nodejs.org](https://nodejs.org) |
-| **yt-dlp** | `winget install yt-dlp` or [github.com/yt-dlp/yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) |
+| **Node.js** 18+ | [nodejs.org](https://nodejs.org) |
+| **yt-dlp** | `winget install yt-dlp` or [GitHub releases](https://github.com/yt-dlp/yt-dlp/releases) |
 | **ffmpeg** | `winget install ffmpeg` or [ffmpeg.org](https://ffmpeg.org/download.html) |
 
-## Quick Start
+> PlayGen auto-detects yt-dlp and ffmpeg from your PATH or common WinGet install locations.
+
+## 🚀 Quick Start
 
 ```bash
 # Clone the repo
@@ -43,41 +60,49 @@ npm install
 npm start
 ```
 
-## Keyboard Shortcuts
+## ⌨️ Keyboard Shortcuts
 
 | Key | Action |
 |-----|--------|
 | `Space` | Play / Pause |
-| `←` / `→` | Seek -5s / +5s |
+| `←` / `→` | Seek −5s / +5s |
 | `Ctrl+←` / `Ctrl+→` | Previous / Next track |
 | `↑` / `↓` | Volume up / down |
 | `S` | Toggle shuffle |
 | `R` | Cycle repeat (off → all → one) |
 | `Ctrl+F` | Focus search |
-| Paste a YouTube URL anywhere | Auto-fills download field |
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 PlayGen/
-├── main.js          # Electron main process (IPC, yt-dlp, database)
-├── preload.js       # Secure bridge between main & renderer
+├── main.js              # Electron main process — IPC, downloads, database
+├── preload.js           # Secure bridge (contextBridge API)
 ├── package.json
+├── assets/
+│   ├── icon.png         # App icon (256×256)
+│   └── icon.ico         # Windows icon
 ├── src/
-│   ├── index.html   # App layout
-│   ├── styles.css   # Cyberpunk theme
-│   └── renderer.js  # App logic, player, visualizer
+│   ├── index.html       # App layout & UI structure
+│   ├── styles.css       # Velvet Noir theme
+│   ├── renderer.js      # App logic, player, visualizer
+│   └── mini-player.html # Compact mini player window
 └── README.md
 ```
 
-## How It Works
+## ⚙️ How It Works
 
-1. **Download**: Paste a YouTube URL → `yt-dlp` extracts MP3 audio → saved to app data folder
-2. **Library**: All downloads appear in "All Downloads" with thumbnail, title, channel, duration
-3. **Playlists**: Create playlists in the sidebar → drag songs onto them or use the context menu
-4. **Player**: Double-click any song to play → bottom bar shows controls + audio visualizer
-5. **Data**: Song metadata & playlists stored in a JSON database in your app data folder
+1. **Download** — Paste a YouTube URL → yt-dlp extracts audio → saved as 320 kbps MP3
+2. **Library** — All downloads appear in "All Downloads" with metadata & artwork
+3. **Playlists** — Create playlists in the sidebar, drag songs or use the right-click menu
+4. **Player** — Click any song to play — controls, visualizer & progress in the bottom bar
+5. **Mini Player** — Minimize the window → a compact player stays on top of your screen
+6. **Storage** — Song metadata & playlists stored in a JSON database in your app data folder
 
-## License
+## 🎨 Theme
+
+PlayGen uses the **Velvet Noir** theme — pure black canvas with hot pink and electric purple accents, Space Grotesk + Inter typography, ambient glow effects, and smooth animations throughout.
+
+## 📄 License
 
 MIT
