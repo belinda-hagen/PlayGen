@@ -169,7 +169,7 @@ function createMiniPlayer() {
     skipTaskbar: true,
     backgroundColor: '#000000',
     hasShadow: true,
-    roundedCorners: true,
+    roundedCorners: false,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
