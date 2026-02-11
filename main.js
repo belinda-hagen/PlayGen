@@ -33,21 +33,38 @@ let db = loadDB();
 let ytdlpPath = 'yt-dlp';
 let ffmpegPath = 'ffmpeg';
 
+// Get the path to bundled binaries (works both in dev and production)
+function getBundledBinPath(name) {
+  // In production (asar), the app path is inside the asar, so we use resourcesPath
+  // In development, we use __dirname
+  if (app.isPackaged) {
+    return path.join(process.resourcesPath, 'bin', name);
+  } else {
+    return path.join(__dirname, 'assets', 'bin', name);
+  }
+}
+
 function findExecutable(name) {
-  // 1. Check system PATH
+  // 1. Check bundled binaries first
+  const bundledPath = getBundledBinPath(`${name}.exe`);
+  if (fs.existsSync(bundledPath)) {
+    return bundledPath;
+  }
+
+  // 2. Check system PATH
   try {
     execSync(`where ${name}`, { stdio: 'ignore' });
     return name; // available on PATH
   } catch { /* not on PATH */ }
 
-  // 2. Search common winget install locations
+  // 3. Search common winget install locations
   const wingetPkgs = path.join(process.env.LOCALAPPDATA || '', 'Microsoft', 'WinGet', 'Packages');
   if (fs.existsSync(wingetPkgs)) {
     const found = findFileRecursive(wingetPkgs, `${name}.exe`, 3);
     if (found) return found;
   }
 
-  // 3. Check common manual install paths
+  // 4. Check common manual install paths
   const commonPaths = [
     path.join(process.env.USERPROFILE || '', name + '.exe'),
     path.join(process.env.USERPROFILE || '', 'Downloads', name + '.exe'),

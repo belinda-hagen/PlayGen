@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "dev": "electron . --dev",
-    "build": "npx electron-packager . PlayGen --platform=win32 --arch=x64 --out=dist --overwrite --icon=assets/icon.ico --ignore=\"dist|.git|.gitignore\" --asar",
+    "build": "npx electron-packager . PlayGen --platform=win32 --arch=x64 --out=dist --overwrite --icon=assets/icon.ico --ignore=\"dist|.git|.gitignore\" --asar --extra-resource=assets/bin",
     "dist": "electron-builder --win"
   },
   "keywords": [
