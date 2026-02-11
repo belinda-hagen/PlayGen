@@ -114,7 +114,10 @@
     btnSettings: $('#btn-settings'),
     settingsOverlay: $('#settings-overlay'),
     settingsClose: $('#settings-close'),
-    settingMiniPlayer: $('#setting-mini-player')
+    settingMiniPlayer: $('#setting-mini-player'),
+
+    // Loading screen
+    loadingScreen: $('#loading-screen')
   };
 
   // ── Utility ─────────────────────────────────────────────────────
@@ -339,6 +342,9 @@
     });
 
     setupEventListeners();
+
+    // Hide loading screen
+    dom.loadingScreen.classList.add('hidden');
   }
 
   // ── Render: Sidebar ─────────────────────────────────────────────
