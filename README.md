@@ -20,8 +20,7 @@
 
 ---
 
-<details open>
-<summary><h2>Features</h2></summary>
+<h2>Features</h2>
 
 | Feature | Description |
 |---|---|
