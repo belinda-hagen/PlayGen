@@ -323,8 +323,8 @@ html, body {
 
 /* Download button — gradient pill */
 .btn-download {
-  height: 36px;
-  padding: 0 20px;
+  height: 34px;
+  padding: 0 16px;
   display: flex;
   align-items: center;
   gap: 7px;
@@ -332,29 +332,31 @@ html, body {
   border: none;
   color: white;
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 1.5px;
   border-radius: var(--r-full);
   cursor: pointer;
   transition: all var(--t-base);
   white-space: nowrap;
-  box-shadow: 0 3px 16px var(--pink-glow);
+  box-shadow: none;
   position: relative;
   overflow: hidden;
+  opacity: 0.85;
 }
 
 .btn-download::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
 }
 
 .btn-download:hover {
+  opacity: 1;
   transform: translateY(-1px);
-  box-shadow: 0 6px 28px rgba(255, 45, 120, 0.35);
-  filter: brightness(1.1);
+  box-shadow: 0 3px 12px rgba(255, 45, 120, 0.2);
+  filter: brightness(1.05);
 }
 
 .btn-download:active {

@@ -68,5 +68,8 @@ npm start
 This tool is intended for downloading content you have the right to download. Users are responsible for complying with applicable laws and YouTube's Terms of Service. The developers of PlayGen do not condone or encourage downloading copyrighted material without permission.
 
 ## License
+ng copyrighted material without permission.
+
+## 📄 License
 
 [MIT](LICENSE)
