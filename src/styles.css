@@ -533,7 +533,7 @@ html, body {
   border-radius: var(--r);
   cursor: pointer;
   transition: all var(--t-base);
-  color: var(--text-200);
+  color: var(--text-100);
   font-size: 13px;
   font-weight: 500;
   position: relative;
@@ -1257,21 +1257,33 @@ body.audio-playing .playing-bar {
   transform: scale(0.93);
 }
 
-/* Ring pulse when playing */
+/* Subtle glow when playing */
 .btn-play::after {
   content: '';
   position: absolute;
-  inset: -5px;
+  inset: -3px;
   border-radius: 50%;
-  border: 1.5px solid var(--pink);
+  background: radial-gradient(circle, var(--pink-glow) 0%, transparent 70%);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s ease;
   pointer-events: none;
+  z-index: -1;
 }
 
 .btn-play.is-playing::after {
-  opacity: 0.25;
-  animation: ring-breathe 2.5s ease-in-out infinite;
+  opacity: 1;
+  animation: gentle-glow 4s ease-in-out infinite;
+}
+
+@keyframes gentle-glow {
+  0%, 100% { 
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.25;
+    transform: scale(1.05);
+  }
 }
 
 @keyframes ring-breathe {
