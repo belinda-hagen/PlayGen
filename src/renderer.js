@@ -744,6 +744,13 @@
   function switchView(viewId) {
     state.currentView = viewId;
     highlightActiveNav();
+
+    // Trigger view transition animation
+    const mainArea = document.getElementById('main-area');
+    mainArea.classList.remove('view-transition');
+    void mainArea.offsetWidth; // force reflow to restart animation
+    mainArea.classList.add('view-transition');
+
     renderSongList();
     saveSession();
   }
